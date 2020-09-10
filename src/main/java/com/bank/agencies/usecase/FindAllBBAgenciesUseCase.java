@@ -1,6 +1,6 @@
 package com.bank.agencies.usecase;
 
-import com.bank.agencies.domain.Agency;
+import com.bank.agencies.domain.AgencyGatewayResponse;
 import com.bank.agencies.external.gateway.AgenciesGateway;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class FindAllBBAgenciesUseCase {
         this.bankResourcesGateway = bankResourcesGateway;
     }
 
-    public List<Agency> execute() {
+    public List<AgencyGatewayResponse> execute() {
         return bankResourcesGateway.findAllBBAgencies();
     }
 }

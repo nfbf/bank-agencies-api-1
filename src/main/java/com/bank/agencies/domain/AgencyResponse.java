@@ -4,18 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Agency implements Serializable {
+public class AgencyResponse implements Serializable {
 
-    private static final long serialVersionUID = -1491071762041597641L;
+    private static final long serialVersionUID = -7394339763238481398L;
 
-    @JsonProperty("NomeAgencia")
     private String name;
-    @JsonProperty("NomeIf")
     private String bank;
-    @JsonProperty("Municipio")
     private String city;
-    @JsonProperty("UF")
     private String state;
 
     public String getName() {
@@ -51,46 +46,47 @@ public class Agency implements Serializable {
     }
 
 
-    public static final class AgencyBuilder {
+    public static final class AgencyResponseBuilder {
         private String name;
         private String bank;
         private String city;
         private String state;
 
-        private AgencyBuilder() {
+        private AgencyResponseBuilder() {
         }
 
-        public static AgencyBuilder anAgency() {
-            return new AgencyBuilder();
+        public static AgencyResponseBuilder anAgencyResponse() {
+            return new AgencyResponseBuilder();
         }
 
-        public AgencyBuilder name(String name) {
+        public AgencyResponseBuilder name(String name) {
             this.name = name;
             return this;
         }
 
-        public AgencyBuilder bank(String bank) {
+        public AgencyResponseBuilder bank(String bank) {
             this.bank = bank;
             return this;
         }
 
-        public AgencyBuilder city(String city) {
+        public AgencyResponseBuilder city(String city) {
             this.city = city;
             return this;
         }
 
-        public AgencyBuilder state(String state) {
+        public AgencyResponseBuilder state(String state) {
             this.state = state;
             return this;
         }
 
-        public Agency build() {
-            Agency agency = new Agency();
-            agency.setName(name);
-            agency.setBank(bank);
-            agency.setCity(city);
-            agency.setState(state);
-            return agency;
+        public AgencyResponse build() {
+            AgencyResponse agencyResponse = new AgencyResponse();
+            agencyResponse.setName(name);
+            agencyResponse.setBank(bank);
+            agencyResponse.setCity(city);
+            agencyResponse.setState(state);
+            return agencyResponse;
         }
     }
 }
+

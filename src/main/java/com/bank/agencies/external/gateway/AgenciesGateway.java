@@ -1,9 +1,9 @@
 package com.bank.agencies.external.gateway;
 
-import com.bank.agencies.domain.Agency;
+import com.bank.agencies.domain.AgencyGatewayResponse;
 
 import java.util.List;
 
 public interface AgenciesGateway {
-    List<Agency> findAllBBAgencies();
+    List<AgencyGatewayResponse> findAllBBAgencies();
 }

@@ -1,7 +1,7 @@
 package com.bank.agencies.external.api;
 
 import com.bank.agencies.external.gateway.AgenciesGateway;
-import com.bank.agencies.domain.Agency;
+import com.bank.agencies.domain.AgencyGatewayResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,7 +33,7 @@ public class AgenciesGatewayImpl implements AgenciesGateway {
     ObjectMapper mapper = new ObjectMapper();
 
     @Override
-    public List<Agency> findAllBBAgencies() {
+    public List<AgencyGatewayResponse> findAllBBAgencies() {
 
         URI apiURI = UriComponentsBuilder
                 .fromUriString(baseUrl)
@@ -52,7 +52,7 @@ public class AgenciesGatewayImpl implements AgenciesGateway {
             if (response.statusCode() == HttpStatus.OK.value()) {
                 JsonNode parent = mapper.readTree(response.body());
                 String content = parent.get("value").toString();
-                return Arrays.asList(mapper.readValue(content, Agency[].class));
+                return Arrays.asList(mapper.readValue(content, AgencyGatewayResponse[].class));
             }
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException("Error when trying get all Agencies from API");

@@ -1,7 +1,8 @@
 package com.bank.agencies.endpoint;
 
 import com.bank.agencies.Application;
-import com.bank.agencies.domain.Agency;
+import com.bank.agencies.domain.AgencyGatewayResponse;
+import com.bank.agencies.domain.AgencyResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ class AgenciesControllerIntegrationTest {
 
 	@Test
 	public void shouldReturnOKWhenDoAGetRequest() {
-		ResponseEntity<Agency[]> responseEntity = restTemplate.getForEntity(API_BASE_URL, Agency[].class);
+		ResponseEntity<AgencyResponse[]> responseEntity = restTemplate.getForEntity(API_BASE_URL, AgencyResponse[].class);
 
 		Assertions.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 		Assertions.assertTrue(responseEntity.getBody().length > 0);
