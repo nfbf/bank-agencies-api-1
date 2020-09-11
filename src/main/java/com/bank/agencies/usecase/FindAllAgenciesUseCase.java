@@ -7,15 +7,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FindAllBBAgenciesUseCase {
+public class FindAllAgenciesUseCase {
 
     private final AgenciesGateway bankResourcesGateway;
 
-    public FindAllBBAgenciesUseCase(AgenciesGateway bankResourcesGateway) {
+    public FindAllAgenciesUseCase(AgenciesGateway bankResourcesGateway) {
         this.bankResourcesGateway = bankResourcesGateway;
     }
 
     public List<AgencyGatewayResponse> execute() {
-        return bankResourcesGateway.findAllBBAgencies();
+        return bankResourcesGateway.findAllAgencies();
     }
 }

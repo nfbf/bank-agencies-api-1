@@ -6,7 +6,7 @@ import java.util.List;
 
 public class AgenciesFixture {
 
-    public static List<AgencyGatewayResponse> gimmeBasicBBAgencies() {
+    public static List<AgencyGatewayResponse> gimmeBasicAgencies() {
         return List.of(AgencyGatewayResponse.AgencyGatewayResponseBuilder.anAgency().bank("BANCO DO BRASIL S.A.").name("EMPRESA JOAO PESSOA").city("JOAO PESSOA").state("PB").build());
     }
 }

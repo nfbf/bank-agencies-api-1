@@ -2,7 +2,7 @@
 
     import com.bank.agencies.domain.AgencyGatewayResponse;
     import com.bank.agencies.domain.AgencyResponse;
-    import com.bank.agencies.usecase.FindAllBBAgenciesUseCase;
+    import com.bank.agencies.usecase.FindAllAgenciesUseCase;
     import org.springframework.http.HttpStatus;
     import org.springframework.http.MediaType;
     import org.springframework.http.ResponseEntity;
@@ -15,17 +15,17 @@
     @RequestMapping(value = "/agencies", produces = MediaType.APPLICATION_JSON_VALUE)
     public class AgenciesController {
 
-        private final FindAllBBAgenciesUseCase findAllBBAgenciesUseCase;
+        private final FindAllAgenciesUseCase findAllAgenciesUseCase;
 
-        public AgenciesController(FindAllBBAgenciesUseCase findAllBBAgenciesUseCase) {
-            this.findAllBBAgenciesUseCase = findAllBBAgenciesUseCase;
+        public AgenciesController(FindAllAgenciesUseCase findAllAgenciesUseCase) {
+            this.findAllAgenciesUseCase = findAllAgenciesUseCase;
         }
 
         @GetMapping
         @ResponseStatus(HttpStatus.OK)
-        public ResponseEntity<List<AgencyResponse>> findAllBBAgencies() {
+        public ResponseEntity<List<AgencyResponse>> findAllAgencies() {
 
-            List<AgencyGatewayResponse> agencies = findAllBBAgenciesUseCase.execute();
+            List<AgencyGatewayResponse> agencies = findAllAgenciesUseCase.execute();
 
             List<AgencyResponse> agencyResponse = agencies.stream()
                     .map(agencyGateway -> AgencyResponse.AgencyResponseBuilder.anAgencyResponse()

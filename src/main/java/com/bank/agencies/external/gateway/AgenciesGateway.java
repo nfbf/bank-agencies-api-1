@@ -5,5 +5,5 @@ import com.bank.agencies.domain.AgencyGatewayResponse;
 import java.util.List;
 
 public interface AgenciesGateway {
-    List<AgencyGatewayResponse> findAllBBAgencies();
+    List<AgencyGatewayResponse> findAllAgencies();
 }

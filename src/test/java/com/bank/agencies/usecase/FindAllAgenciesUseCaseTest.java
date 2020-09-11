@@ -12,24 +12,24 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
-public class FindAllBBAgenciesUseCaseTest {
+public class FindAllAgenciesUseCaseTest {
 
     final AgenciesGateway gateway = mock(AgenciesGateway.class);
-    final FindAllBBAgenciesUseCase findAllBBAgencies = new FindAllBBAgenciesUseCase(gateway);
+    final FindAllAgenciesUseCase findAllAgencies = new FindAllAgenciesUseCase(gateway);
 
     List<AgencyGatewayResponse> agencies;
 
     @Test
     void shouldExecuteUseCaseFindAllBBAgenciesWithSuccess() {
         // given
-        agencies = AgenciesFixture.gimmeBasicBBAgencies();
-        when(findAllBBAgencies.execute()).thenReturn(agencies);
+        agencies = AgenciesFixture.gimmeBasicAgencies();
+        when(findAllAgencies.execute()).thenReturn(agencies);
 
         // when
-        final List<AgencyGatewayResponse> response = findAllBBAgencies.execute();
+        final List<AgencyGatewayResponse> response = findAllAgencies.execute();
 
         // then
-        verify(gateway, times(1)).findAllBBAgencies();
+        verify(gateway, times(1)).findAllAgencies();
 
         assertNotNull(response);
         assertNotNull(response.get(0));

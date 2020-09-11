@@ -33,11 +33,10 @@ public class AgenciesGatewayImpl implements AgenciesGateway {
     ObjectMapper mapper = new ObjectMapper();
 
     @Override
-    public List<AgencyGatewayResponse> findAllBBAgencies() {
+    public List<AgencyGatewayResponse> findAllAgencies() {
 
         URI apiURI = UriComponentsBuilder
                 .fromUriString(baseUrl)
-                .queryParam("$filter", "NomeIf eq 'BANCO DO BRASIL S.A.'")
                 .queryParam("$format", "json")
                 .build().toUri();
 
