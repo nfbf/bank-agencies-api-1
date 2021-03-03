@@ -59,5 +59,6 @@ public class AgenciesGatewayImpl implements AgenciesGateway {
 
         return Collections.emptyList();
     }
+  
 
 }

@@ -9,7 +9,8 @@
     import org.springframework.web.bind.annotation.*;
 
     import java.util.List;
-    import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.stream.Collectors;
 
     @RestController
     @RequestMapping(value = "/agencies", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -25,15 +26,18 @@
         @ResponseStatus(HttpStatus.OK)
         public ResponseEntity<List<AgencyResponse>> findAllAgencies() {
 
-            List<AgencyGatewayResponse> agencies = findAllAgenciesUseCase.execute();
-
-            List<AgencyResponse> agencyResponse = agencies.stream()
-                    .map(agencyGateway -> AgencyResponse.AgencyResponseBuilder.anAgencyResponse()
-                    .bank(agencyGateway.getBank())
-                    .city(agencyGateway.getCity())
-                    .name(agencyGateway.getName())
-                    .state(agencyGateway.getState()).build())
-                    .collect(Collectors.toList());
+            List<AgencyGatewayResponse> agencies = findAllAgenciesUseCase.execute();            
+            List<AgencyResponse> agencyResponse = AgencyResponseDTO.getAllAgenciesResponse(agencies);
+            
+            return new ResponseEntity<>(agencyResponse, HttpStatus.OK);
+        }
+        
+        @GetMapping("/by/state")
+        @ResponseStatus(HttpStatus.OK)
+        public ResponseEntity<Map<String, List<AgencyResponse>>> findAllAgenciesByState() {
+            
+            List<AgencyGatewayResponse> agencies = findAllAgenciesUseCase.execute();            
+            Map<String,List<AgencyResponse>> agencyResponse = AgencyResponseDTO.getAllAgenciesByStateResponse(agencies);
 
             return new ResponseEntity<>(agencyResponse, HttpStatus.OK);
         }

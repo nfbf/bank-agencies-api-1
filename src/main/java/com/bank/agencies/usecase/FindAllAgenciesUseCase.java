@@ -18,4 +18,5 @@ public class FindAllAgenciesUseCase {
     public List<AgencyGatewayResponse> execute() {
         return bankResourcesGateway.findAllAgencies();
     }
+ 
 }

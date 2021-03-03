@@ -1,7 +1,5 @@
 package com.bank.agencies.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 public class AgencyResponse implements Serializable {
